@@ -1,0 +1,143 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  user      String
+  email     String?  @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  orders    Orders[]
+}
+
+model Clients {
+  id     Int      @id @default(autoincrement())
+  name   String
+  email  String?
+  phone  String
+  orders Orders[]
+}
+
+model Categories {
+  id       Int        @id @default(autoincrement())
+  category Category[]
+}
+
+model Pasteles {
+  id          Int           @id @default(autoincrement())
+  clasic      Clasic[]
+  deluxe      Deluxe[]
+  spongeCake  SpongeCake[]
+  traditional Traditional[]
+}
+
+model Clasic {
+  id         Int      @id @default(autoincrement())
+  flavorId   Int
+  flavors    Flavors  @relation(fields: [flavorId], references: [id])
+  pastelesId Int
+  Pasteles   Pasteles @relation(fields: [pastelesId], references: [id])
+  Sizes      Sizes?   @relation(fields: [sizesId], references: [id])
+  sizesId    Int?
+}
+
+model Deluxe {
+  id         Int      @id @default(autoincrement())
+  flavorId   Int
+  flavors    Flavors  @relation(fields: [flavorId], references: [id])
+  pastelesId Int
+  Pasteles   Pasteles @relation(fields: [pastelesId], references: [id])
+  Sizes      Sizes?   @relation(fields: [sizesId], references: [id])
+  sizesId    Int?
+}
+
+model SpongeCake {
+  id         Int      @id @default(autoincrement())
+  flavorId   Int
+  flavors    Flavors  @relation(fields: [flavorId], references: [id])
+  pastelesId Int
+  Pasteles   Pasteles @relation(fields: [pastelesId], references: [id])
+  Sizes      Sizes?   @relation(fields: [sizesId], references: [id])
+  sizesId    Int?
+}
+
+model Traditional {
+  id         Int      @id @default(autoincrement())
+  flavorId   Int
+  flavors    Flavors  @relation(fields: [flavorId], references: [id])
+  pastelesId Int
+  Pasteles   Pasteles @relation(fields: [pastelesId], references: [id])
+  Sizes      Sizes?   @relation(fields: [sizesId], references: [id])
+  sizesId    Int?
+}
+
+model Orders {
+  id             Int         @id @default(autoincrement())
+  amount         Int
+  categoryId     Int
+  flavorsId      Int
+  sizesId        Int
+  decorationId   Int
+  ingredientsId  Int
+  authorId       Int
+  cliendsId      Int
+  collectionDate String
+  statusPay      String
+  statusOrder    Boolean     @default(false)
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  author         User        @relation(fields: [authorId], references: [id])
+  category       Category    @relation(fields: [categoryId], references: [id])
+  clients        Clients     @relation(fields: [cliendsId], references: [id])
+  decoration     Decoration  @relation(fields: [decorationId], references: [id])
+  flavors        Flavors     @relation(fields: [flavorsId], references: [id])
+  ingredients    Ingredients @relation(fields: [ingredientsId], references: [id])
+  sizes          Sizes       @relation(fields: [sizesId], references: [id])
+}
+
+model Category {
+  id           Int        @id @default(autoincrement())
+  name         String
+  categoriesId Int
+  Categories   Categories @relation(fields: [categoriesId], references: [id])
+  Orders       Orders[]
+}
+
+model Flavors {
+  id          Int           @id @default(autoincrement())
+  name        String
+  Orders      Orders[]
+  Clasic      Clasic[]
+  Deluxe      Deluxe[]
+  SpongeCake  SpongeCake[]
+  Traditional Traditional[]
+}
+
+model Sizes {
+  id          Int           @id @default(autoincrement())
+  name        String
+  Orders      Orders[]
+  Clasic      Clasic[]
+  Deluxe      Deluxe[]
+  SpongeCake  SpongeCake[]
+  Traditional Traditional[]
+}
+
+model Decoration {
+  id     Int      @id @default(autoincrement())
+  name   String
+  Orders Orders[]
+}
+
+model Ingredients {
+  id     Int      @id @default(autoincrement())
+  name   String
+  Orders Orders[]
+}
