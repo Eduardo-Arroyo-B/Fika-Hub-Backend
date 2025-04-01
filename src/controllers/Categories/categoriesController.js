@@ -1,6 +1,6 @@
 import prisma from '../../../prisma/Client/prismaClient.js'
 
-const getCategories = async (req, res) => {
+const getCakes = async (req, res) => {
     // Obtener todas las categorias
     try {
         const pasteles = await prisma.pasteles.findMany({
@@ -25,5 +25,5 @@ const getCategories = async (req, res) => {
 
 
 export {
-    getCategories
+    getCakes
 }
