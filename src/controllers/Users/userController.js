@@ -1,5 +1,6 @@
 import { check, validationResult } from 'express-validator'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 import prisma from "../../../prisma/Client/prismaClient.js"
 
 const createUser = async (req, res) => {
@@ -33,7 +34,17 @@ const createUser = async (req, res) => {
             return res.status(400).json({ message: 'Error al crear el usuario' })
         }
 
-        return res.status(201).json({ message: 'Usuario creado correctamente', user: createUser })
+        // Genera el token de acceso
+        const token = jwt.sign({ id: createUser.id }, process.env.SECRET, { expiresIn: '8h' })
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            signed: true,
+            maxAge: 8 * 60 * 60 * 1000 // 8 horas
+        })
+        res.status(201).json({ message: 'Usuario creado correctamente', user: createUser })
+
     } catch (error) {
         return res.status(400).json({ message: 'Ha ocurrido un error' , error: error.message })
     }
@@ -72,7 +83,34 @@ const loginUser = async (req, res) => {
             return res.status(400).json({ message: 'Error al iniciar sesion' })
         }
 
+        // Genera el token de acceso
+        const token = jwt.sign({ id: createUser.id }, process.env.SECRET, { expiresIn: '8h' })
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            signed: true,
+            maxAge: 8 * 60 * 60 * 1000 // 8 horas
+        })
+
         return res.status(200).json({ message: 'Sesion iniciada correctamente', user: loginUser })
+
+    } catch (error) {
+        return res.status(400).json({ message: 'Ha ocurrido un error' , error: error.message })
+    }
+}
+
+const getUsers = async (req, res) => {
+    // Obtiene los usuarios
+    try {
+        const users = await prisma.user.findMany()
+
+        if (!users) {
+            return res.status(400).json({ message: 'Error al obtener los usuarios' })
+        }
+
+        return res.status(200).json({ message: 'Usuarios obtenidos correctamente', users })
+
     } catch (error) {
         return res.status(400).json({ message: 'Ha ocurrido un error' , error: error.message })
     }
@@ -80,5 +118,6 @@ const loginUser = async (req, res) => {
 
 export {
     createUser,
-    loginUser
+    loginUser,
+    getUsers
 }

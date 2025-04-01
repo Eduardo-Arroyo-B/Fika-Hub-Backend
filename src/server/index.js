@@ -1,4 +1,5 @@
 import express from 'express'
+import cookieParser from 'cookie-parser'
 import usersRoutes from '../routes/Users/userRoutes.js'
 
 const app = express();
@@ -6,7 +7,8 @@ const app = express();
 // Configuracion de puerto
 app.set('port', process.env.PORT || 3000)
 
-// Middleware para parsear el body
+// Middlewares
+app.use(cookieParser(process.env.SECRET))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
