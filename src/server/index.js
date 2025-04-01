@@ -1,6 +1,7 @@
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import usersRoutes from '../routes/Users/userRoutes.js'
+import categoriesRoutes from '../routes/Categories/categoriesRoutes.js'
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // Endpoints
 app.use("/users", usersRoutes)
+app.use("/categories", categoriesRoutes)
 
 // Verificar si el servidor esta vivo
 app.use("/serverAlive", (req, res) => {

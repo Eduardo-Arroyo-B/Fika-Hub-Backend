@@ -4,7 +4,7 @@ import {
     loginUser,
     getUsers
 } from "../../controllers/Users/userController.js"
-import cookiesValidation from "../../middlewares/cookiesValidation.js";
+import cookiesValidation from "../../middlewares/cookiesValidation.js"
 
 const router = express.Router();
 
