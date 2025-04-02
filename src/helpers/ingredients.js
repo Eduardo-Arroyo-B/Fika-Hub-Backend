@@ -12,7 +12,7 @@ const ingredients = [
     { name: "Curl de limon" },
     { name: "Cremoso de frutos rojos" },
     { name: "Confitura de frambuesa" },
-    { name: "Galleta de cheesecake" },
+    { name: "Galleta de cheesecake" }
 ]
 
 export default ingredients
