@@ -1,5 +1,5 @@
 import prisma from '../../prisma/Client/prismaClient.js'
-import ingredients from '../helpers/flavors.js'
+import ingredients from '../helpers/ingredients.js'
 
 const createIngredients = async () => {
     const newIngredient = await prisma.ingredients.createMany({

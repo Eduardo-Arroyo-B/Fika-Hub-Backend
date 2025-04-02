@@ -42,9 +42,10 @@ enum PastelType {
 }
 
 model Flavors {
-  id       Int        @id @default(autoincrement())
-  name     String
-  Pasteles Pasteles[] // Relación con Pasteles
+  id          Int           @id @default(autoincrement())
+  name        String
+  Pasteles    Pasteles[] // Relación con Pasteles
+  ingredients Ingredients[] // Relación con ingredientes
 }
 
 model Sizes {
@@ -59,4 +60,11 @@ model Orders {
   userId    Int?
   Clients   Clients? @relation(fields: [clientsId], references: [id])
   clientsId Int?
+}
+
+model Ingredients {
+  id        Int       @id @default(autoincrement())
+  name      String
+  available Boolean   @default(true)
+  flavors   Flavors[] // Relación con sabores
 }
