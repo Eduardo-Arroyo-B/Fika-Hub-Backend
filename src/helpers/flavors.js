@@ -37,15 +37,15 @@ const flavors = [
     },
     {
         name: "Blueberry",
-        ingredients: []
+        ingredients: [10, 11]
     },
     {
         name: "Vainilla",
-        ingredients: []
+        ingredients: [12, 13]
     },
     {
         name: "Red Velvet",
-        ingredients: []
+        ingredients: [10, 14]
     },
     {
         name: "Zanahoria",
