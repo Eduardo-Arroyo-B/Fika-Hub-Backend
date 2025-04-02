@@ -8,13 +8,22 @@ const connectClasic = async (req, res) => {
                 type: "DELUXE",
                 flavors: {
                     connect: [
-                        { id: 7},
-                        { id: 7},
+                        { id: 7 },
+                        { id: 1 },
+                        { id: 8 },
+                        { id: 9 },
+                        { id: 5 },
                     ] // Conectar sabores existentes
                 },
                 sizes: {
                     connect: [
-                        { id: 4 }
+                        { id: 1 },
+                        { id: 2 },
+                        { id: 3 },
+                        { id: 5 },
+                        { id: 6 },
+                        { id: 7 },
+                        { id: 8 },
                     ] // Conectar tamaños existentes
                 }
             }
