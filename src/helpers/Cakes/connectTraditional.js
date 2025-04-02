@@ -17,7 +17,11 @@ const connectTraditional = async (req, res) => {
                 },
                 flavors: {
                     connect: [
+                        { id: 7 },
                         { id: 1 },
+                        { id: 8 },
+                        { id: 9 },
+                        { id: 5 },
                     ] // Conectar sabores existentes
                 },
                 sizes: {

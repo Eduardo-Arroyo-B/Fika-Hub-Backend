@@ -6,23 +6,23 @@ const categories = [
     },
     {
         name: "3 Leches",
-        flavors: [2],
-        sizes: [4]
+        flavors: [],
+        sizes: [4, 6]
     },
     {
         name: "Chocoflan",
-        flavors: [3, 6],
-        sizes: [4, 5]
+        flavors: [],
+        sizes: [5]
     },
     {
         name: "Cheesecake",
-        flavors: [3, 6],
-        sizes: [4, 5]
+        flavors: [1, 6],
+        sizes: [1, 3, 5]
     },
     {
         name: "Tiramisú",
-        flavors: [3, 6],
-        sizes: [4, 5]
+        flavors: [],
+        sizes: [1, 5]
     }
 ]
 

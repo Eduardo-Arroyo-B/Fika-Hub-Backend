@@ -1,12 +1,12 @@
 const sizes = [
-    { name: "3"},
-    { name: "4"},
-    { name: "6"},
-    { name: "8"},
-    { name: "9"},
-    { name: "12"},
-    { name: "1/4 de Plancha"},
-    { name: "1/2 Plancha"}
+    { size: "3"},
+    { size: "4"},
+    { size: "6"},
+    { size: "8"},
+    { size: "9"},
+    { size: "12"},
+    { size: "1/4 de Plancha"},
+    { size: "1/2 Plancha"}
 ]
 
 export default sizes

@@ -4,7 +4,7 @@ import sizes from '../helpers/sizes.js'
 const createSizes = async () => {
     const newSizes = await prisma.sizes.createMany({
         data: sizes.map(sizes => ({
-            name: sizes.name
+            size: sizes.size
         }))
     })
 
