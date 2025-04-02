@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/server/index.js",
-    "data": "node src/helpers/createFlavors.js && node src/helpers/createIngredients.js && node src/helpers/createSizes.js",
+    "data": "node src/helpers/createFlavors.js && node src/helpers/createIngredients.js && node src/helpers/createSizes.js && node src/helpers/createCategory.js",
     "connects": "node src/helpers/Cakes/connectDeluxe.js && node src/helpers/Cakes/connectSpongeCake.js && node src/helpers/Cakes/connectTraditional.js && node src/helpers/Cakes/connectClasic.js"
   },
   "keywords": [
