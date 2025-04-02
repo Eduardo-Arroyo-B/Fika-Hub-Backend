@@ -1,6 +1,6 @@
 import prisma from '../../../prisma/Client/prismaClient.js'
 
-const connectClasic = async (req, res) => {
+const connectDeluxe = async (req, res) => {
     // Conectar sabores con pasteles clasicos
     try {
         const nuevoPastel = await prisma.pasteles.create({
@@ -30,14 +30,14 @@ const connectClasic = async (req, res) => {
         })
 
         if (!nuevoPastel) {
-            console.log('Ha ocurrido un error al agregar los sabores')
+            console.log('Ha ocurrido un error al agregar los sabores y tamaños a los pasteles deluxe')
         }
 
-        console.log('Se han agregado los sabores a los pasteles clasicos')
+        console.log('Se han agregado los sabores y tamaños a los pasteles deluxe')
 
     } catch (error) {
         console.log('Ha ocurrido un error', error.message)
     }
 }
 
-connectClasic()
+connectDeluxe()
