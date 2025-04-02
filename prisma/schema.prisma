@@ -26,11 +26,19 @@ model Clients {
 }
 
 model Pasteles {
-  id      Int        @id @default(autoincrement())
-  type    PastelType // Tipo de pastel (clásico, deluxe, etc.)
-  // Relación directa con sabores y tamaños
-  flavors Flavors[]
-  sizes   Sizes[]
+  id       Int        @id @default(autoincrement())
+  type     PastelType // Tipo de pastel (clásico, deluxe, etc.)
+  flavors  Flavors[]
+  sizes    Sizes[]
+  category Category[]
+}
+
+model Category {
+  id       Int        @id @default(autoincrement())
+  name     String
+  Pasteles Pasteles[] // Relación con pasteles
+  flavors  Flavors[]
+  sizes    Sizes[]
 }
 
 // Enum para definir los tipos de pasteles
@@ -46,12 +54,14 @@ model Flavors {
   name        String
   Pasteles    Pasteles[] // Relación con Pasteles
   ingredients Ingredients[] // Relación con ingredientes
+  category    Category[] // Relación con categorías
 }
 
 model Sizes {
   id       Int        @id @default(autoincrement())
-  name     String
+  size     String
   Pasteles Pasteles[] // Relación con Pasteles
+  category Category[] // Relación con categorías
 }
 
 model Orders {

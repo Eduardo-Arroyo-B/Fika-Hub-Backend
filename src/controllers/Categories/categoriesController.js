@@ -6,7 +6,13 @@ const getCakes = async (req, res) => {
         const pasteles = await prisma.pasteles.findMany({
             include: {
                 flavors: true,
-                sizes: true
+                sizes: true,
+                category: {
+                    include: {
+                        flavors: true,
+                        sizes: true
+                    }
+                }
             }
         })
 
