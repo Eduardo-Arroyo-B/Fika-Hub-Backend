@@ -26,11 +26,12 @@ model Clients {
 }
 
 model Pasteles {
-  id       Int        @id @default(autoincrement())
-  type     PastelType // Tipo de pastel (clásico, deluxe, etc.)
-  flavors  Flavors[]
-  sizes    Sizes[]
-  category Category[]
+  id        Int         @id @default(autoincrement())
+  type      PastelType // Tipo de pastel (clásico, deluxe, etc.)
+  flavors   Flavors[]
+  sizes     Sizes[]
+  category  Category[]
+  OrderItem OrderItem[]
 }
 
 model Category {
@@ -55,21 +56,42 @@ model Flavors {
   Pasteles    Pasteles[] // Relación con Pasteles
   ingredients Ingredients[] // Relación con ingredientes
   category    Category[] // Relación con categorías
+  OrderItem   OrderItem[]
 }
 
 model Sizes {
-  id       Int        @id @default(autoincrement())
-  size     String
-  Pasteles Pasteles[] // Relación con Pasteles
-  category Category[] // Relación con categorías
+  id        Int         @id @default(autoincrement())
+  size      String
+  Pasteles  Pasteles[] // Relación con Pasteles
+  category  Category[] // Relación con categorías
+  OrderItem OrderItem[]
 }
 
 model Orders {
-  id        Int      @id @default(autoincrement())
-  User      User?    @relation(fields: [userId], references: [id])
-  userId    Int?
-  Clients   Clients? @relation(fields: [clientsId], references: [id])
-  clientsId Int?
+  id        Int         @id @default(autoincrement())
+  User      User        @relation(fields: [userId], references: [id])
+  userId    Int
+  Clients   Clients     @relation(fields: [clientsId], references: [id])
+  clientsId Int
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  OrderItem OrderItem[]
+}
+
+model OrderItem {
+  id               Int      @id @default(autoincrement())
+  Orders           Orders   @relation(fields: [ordersId], references: [id])
+  ordersId         Int
+  Pasteles         Pasteles @relation(fields: [pastelId], references: [id])
+  pastelId         Int
+  Flavor           Flavors  @relation(fields: [flavorId], references: [id])
+  flavorId         Int
+  Size             Sizes    @relation(fields: [sizeId], references: [id])
+  sizeId           Int
+  mensaje          String?
+  fechaRecoleccion String
+  status           String   @default("PENDING") // Estado del pedido (pendiente, entregado)
+  quantity         Int
 }
 
 model Ingredients {
