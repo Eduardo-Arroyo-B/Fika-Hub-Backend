@@ -78,6 +78,7 @@ const getOrder = async (req, res) => {
                         },
                         mensaje: true,
                         fechaRecoleccion: true,
+                        status: true,
                     }
                 }
             }
