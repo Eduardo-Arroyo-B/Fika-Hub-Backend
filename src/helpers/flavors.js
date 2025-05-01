@@ -54,6 +54,26 @@ const flavors = [
     {
         name: "Limon",
         ingredients: []
+    },
+    {
+        name: "Tartas",
+        ingredients: [1, 14]
+    },
+    {
+        name: "3 Leches",
+        ingredients: []
+    },
+    {
+        name: "Chocoflan",
+        ingredients: []
+    },
+    {
+        name: "Cheesecake",
+        ingredients: [1,6]
+    },
+    {
+        name: "Tiramisu",
+        ingredients: []
     }
 ]
 

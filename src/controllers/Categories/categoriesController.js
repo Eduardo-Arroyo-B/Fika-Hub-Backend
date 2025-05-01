@@ -10,13 +10,7 @@ const getCakes = async (req, res) => {
                         ingredients: true
                     }
                 },
-                sizes: true,
-                category: {
-                    include: {
-                        flavors: true,
-                        sizes: true
-                    }
-                }
+                sizes: true
             }
         })
 
