@@ -57,7 +57,7 @@ const flavors = [
     },
     {
         name: "Tartas",
-        ingredients: [1, 14]
+        ingredients: [15, 16]
     },
     {
         name: "3 Leches",
@@ -69,7 +69,7 @@ const flavors = [
     },
     {
         name: "Cheesecake",
-        ingredients: [1,6]
+        ingredients: [16,17]
     },
     {
         name: "Tiramisu",
