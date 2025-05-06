@@ -8,7 +8,7 @@ import clientsRoutes from '../routes/Clients/clientsRoutes.js'
 const app = express();
 
 // Configuracion de puerto
-app.set('port', process.env.PORT || 3000)
+app.set('port', process.env.PORT || 3000) // Configura el puerto del server o el local
 
 // Middlewares
 app.use(cookieParser(process.env.SECRET))
