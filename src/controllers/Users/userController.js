@@ -69,6 +69,11 @@ const loginUser = async (req, res) => {
         const loginUser = await prisma.user.findFirst({
             where: {
                 user
+            },
+            select: {
+                id: true,
+                user: true,
+                email: true,
             }
         })
 
