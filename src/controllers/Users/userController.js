@@ -74,6 +74,7 @@ const loginUser = async (req, res) => {
                 id: true,
                 user: true,
                 email: true,
+                password: true
             }
         })
 
